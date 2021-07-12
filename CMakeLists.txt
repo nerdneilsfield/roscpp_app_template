@@ -57,11 +57,10 @@ add_message_files(
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  AddTwoInts.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -139,6 +138,16 @@ include_directories(
 add_executable(${PROJECT_NAME}_node src/main.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  )
+add_executable(add_two_ints_server src/add_two_ints_server)
+## Specify libraries to link a library or executable target against
+target_link_libraries(add_two_ints_server
+  ${catkin_LIBRARIES}
+)
+add_executable(add_two_ints_client src/add_two_ints_server)
+## Specify libraries to link a library or executable target against
+target_link_libraries(add_two_ints_client
   ${catkin_LIBRARIES}
 )
 
